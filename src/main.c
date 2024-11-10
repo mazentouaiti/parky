@@ -8,33 +8,38 @@
 #endif
 
 #include <gtk/gtk.h>
+
 #include "interface.h"
 #include "support.h"
 
-int main(int argc, char *argv[]) {
-    GtkWidget *main_window;
-    
+int
+main (int argc, char *argv[])
+{
+  GtkWidget *_Avis_et_R__clamations;
+  GtkWidget *dialogue;
 
 #ifdef ENABLE_NLS
-    bindtextdomain(GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-    textdomain(GETTEXT_PACKAGE);
+  bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+  textdomain (GETTEXT_PACKAGE);
 #endif
 
-    gtk_set_locale();
-    gtk_init(&argc, &argv);
+  gtk_set_locale ();
+  gtk_init (&argc, &argv);
 
-    // Load the Glade interface
-    GtkBuilder *builder = gtk_builder_new();
-    gtk_builder_add_from_file(builder, "../my_glade_file.glade", NULL);  // Adjust path if needed
+  add_pixmap_directory (PACKAGE_DATA_DIR "/" PACKAGE "/pixmaps");
 
-    // Set up the main window
-    main_window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
-    gtk_widget_show_all(main_window);
+  /*
+   * The following code was added by Glade to create one of each component
+   * (except popup menus), just so that you see something after building
+   * the project. Delete any components that you don't want shown initially.
+   */
+  _Avis_et_R__clamations = create__Avis_et_R__clamations ();
+  gtk_widget_show (_Avis_et_R__clamations);
+  dialogue = create_dialogue ();
+  gtk_widget_show (dialogue);
 
-   
-
-    gtk_main();
-    return 0;
+  gtk_main ();
+  return 0;
 }
 
